@@ -1,0 +1,96 @@
+<html>
+
+<head>
+  <style>
+    .header {
+      border: solid 1px black;
+      grid-area: header;
+    }
+    
+    .random {
+      border: solid 1px black;
+      grid-area: random;
+    }
+    
+    .curated {
+      border: solid 1px black;
+      grid-area: curated;
+    }
+    
+    .promoted {
+      border: solid 1px black;
+      grid-area: promoted;
+    }
+    
+    .footer {
+      border: solid 1px black;
+      grid-area: footer;
+    }
+    
+    .gallery img {
+      width: 95%;
+    }
+
+    .description {
+      width: 95%;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 400px 400px;
+      grid-template-rows:    auto;
+      justify-content: center;
+      justify-items: stretch;
+      text-align: center;
+
+      grid-template-areas: 
+        "header header"
+        "random curated"
+        "random promoted"
+        "footer footer";
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>What to play?!</h1>
+    </div>
+    <div class="random">
+      <div class="randomName">
+        <h2>Random game</h2>
+        <h2>
+          <a href="http://store.steampowered.com/app/208353">Train Simulator: ScotRail Class 380 EMU Add-On</a>
+        </h2>
+      </div>
+      <div class="gallery">
+        <a><img src="https://steamcdn-a.akamaihd.net/steam/apps/208353/ss_f9e73dd81b0ce587a240878f1193d71ca007867d.600x338.jpg?t=1486647068">
+        </a>
+      </div>
+      <div class="description">
+        <p>The Class 380 electric multiple unit is a great modern image British train, and runs on the <a href=\"http://store.steampowered.com/app/24065/\" target=\"_blank\" rel=\"noreferrer\"  > Glasgow Airport Rail Link </a> route (also available for Train Simulator).</p>
+      </div>
+    </div>
+    <div class="curated">
+      <div class="curatedName">
+          <h2>Curated game</h2>
+          <h2>
+            <a href="http://store.steampowered.com/app/322190">Steamworld Heist</a>
+          </h2>
+        </div>
+        <div class="gallery">
+          <a><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_d102e1688a5ed0d935ff8d842e36c7e79ba9307a.600x338.jpg?t=1528892155">
+          </a>
+        </div>
+        <div class="description">
+          <p>2D Strategy RPG. <a href="https://store.steampowered.com/app/268500">X-Com 2</a> + <a href="https://store.steampowered.com/app/217200">Worms Armaggeddon</a></p>
+        </div>
+    </div>
+    <div class="promoted">p</div>
+    <div class="footer">a</div>
+  </div>
+</body>
+
+</html>
