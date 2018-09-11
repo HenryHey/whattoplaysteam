@@ -1,0 +1,54 @@
+.header {
+  border: solid 1px black;
+  grid-area: header;
+}
+
+.random {
+  border: solid 1px black;
+  grid-area: random;
+}
+
+.curated {
+  border: solid 1px black;
+  grid-area: curated;
+}
+
+.promoted {
+  border: solid 1px black;
+  grid-area: promoted;
+}
+
+.footer {
+  border: solid 1px black;
+  grid-area: footer;
+}
+
+.gallery img {
+  width: 95%;
+}
+
+.description {
+  width: 95%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 600px 600px;
+  grid-template-rows:    auto;
+  justify-content: center;
+  justify-items: stretch;
+  text-align: center;
+
+  grid-template-areas: 
+    "header header"
+    "random curated"
+    "random promoted"
+    "footer footer";
+}
+
+a[href*="steampowered.com/"] {
+  background:url(steamIcon.png) no-repeat right top;
+  background-size: 12px;
+  padding-right:15px;
+  margin-right:0.5em;
+}

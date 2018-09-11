@@ -1,85 +1,42 @@
 <html>
 
 <head>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <title>What to play on Steam?</title>
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-9887741933377417",
         enable_page_level_ads: true
       });
-    </script>
+    </script> -->
   </div>
 
-  <style>
-    .header {
-      border: solid 1px black;
-      grid-area: header;
-    }
-    
-    .random {
-      border: solid 1px black;
-      grid-area: random;
-    }
-    
-    .curated {
-      border: solid 1px black;
-      grid-area: curated;
-    }
-    
-    .promoted {
-      border: solid 1px black;
-      grid-area: promoted;
-    }
-    
-    .footer {
-      border: solid 1px black;
-      grid-area: footer;
-    }
-    
-    .gallery img {
-      width: 95%;
-    }
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./tinyslide.css">
 
-    .description {
-      width: 95%;
-    }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/tiny-slider.css">
+  <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/min/tiny-slider.helper.ie8.js"></script><![endif]-->
 
-    .container {
-      display: grid;
-      grid-template-columns: 400px 400px;
-      grid-template-rows:    auto;
-      justify-content: center;
-      justify-items: stretch;
-      text-align: center;
 
-      grid-template-areas: 
-        "header header"
-        "random curated"
-        "random promoted"
-        "footer footer";
-    }
-
-  </style>
 </head>
 
 <body>
   <div class="container">
     <div class="header">
-      <h1>What to play?!</h1>
+      <h1>What to play on Steam?</h1>
     </div>
     <div class="random">
       <div class="randomName">
-        <h2>Random game</h2>
+        <h2 >Random game</h2>
         <h2>
-          <a href="http://store.steampowered.com/app/208353">Train Simulator: ScotRail Class 380 EMU Add-On</a>
+          <a id="randomGameName" href="http://store.steampowered.com/app/208353">Train Simulator: ScotRail Class 380 EMU Add-On</a>
         </h2>
       </div>
       <div class="gallery">
-        <a><img src="https://steamcdn-a.akamaihd.net/steam/apps/208353/ss_f9e73dd81b0ce587a240878f1193d71ca007867d.600x338.jpg?t=1486647068">
-        </a>
+        <div id="randomGameScreenshots" class="randomSlider"></div>
       </div>
-      <div class="description">
-        <p>The Class 380 electric multiple unit is a great modern image British train, and runs on the <a href=\"http://store.steampowered.com/app/24065/\" target=\"_blank\" rel=\"noreferrer\"  > Glasgow Airport Rail Link </a> route (also available for Train Simulator).</p>
+      <div id="randomGameDescription" class="description">
+        <p>The Class 380 electric multiple unit is a great modern image British train, and runs on the <a href=\"http://store.steampowered.com/app/24065/\" target=\"_blank\" rel=\"noreferrer\"  >Glasgow Airport Rail Link</a>route (also available for Train Simulator).</p>
       </div>
     </div>
     <div class="curated">
@@ -90,8 +47,18 @@
           </h2>
         </div>
         <div class="gallery">
-          <a><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_d102e1688a5ed0d935ff8d842e36c7e79ba9307a.600x338.jpg?t=1528892155">
-          </a>
+          <div class="curatedSlider">
+            <!-- <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_d102e1688a5ed0d935ff8d842e36c7e79ba9307a.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_6e3c18e55376597f09c98a8c85656e896f358be0.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_0eefbeb22592e3370d1716e036241bb48faa6244.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_ee7aebdb653e9e2ce0ba0fb4c0e5d81ab27ddcbe.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_c3f2171a4ff2a5a52a488c48d99296ccb5b52254.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_716d671bb000eb6ac6c8a07380f5ced021a96b74.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_e1623c8cd3295380959d4739be0179a3515edea5.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_a534aac9436ed822f7b1dc8579e224bd9239f481.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_2001016f2c8e9a9ecd220b34734aa3e575477a63.600x338.jpg?t=1528892155"/></div>
+            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_33cb8ccac69c661b3fa71792eff175e3bde5ccb6.600x338.jpg?t=1528892155"/></div> -->
+          </div>
         </div>
         <div class="description">
           <p>2D Strategy RPG. <a href="https://store.steampowered.com/app/268500">X-Com 2</a> + <a href="https://store.steampowered.com/app/217200">Worms Armaggeddon</a></p>
@@ -111,6 +78,59 @@
     </div>
     <div class="footer">a</div>
   </div>
+
+  <script src="./calls.js"></script>
+  <script>
+    //const gets = require("./calls.js");
+    init( (response) => {
+      
+      document.getElementById("randomGameName").innerText = response.name;
+      const steamUrl = "https://store.steampowered.com/app/" + response.steam_appid;
+      document.getElementById("randomGameName").setAttribute("href", steamUrl);
+      document.getElementById("randomGameDescription").innerHTML = response.short_description;
+      
+      response.screenshots.forEach(screenshot => {
+        let elem = document.createElement('div');
+        let img = document.createElement("img");
+        img.setAttribute("src", screenshot.path_thumbnail);
+        elem.appendChild(img);
+        document.getElementById("randomGameScreenshots").appendChild(elem);
+      });
+
+      var slider = tns({
+      container: '.randomSlider',
+      "autowidth": true,
+      "items": 1,
+      "slideBy": "page",
+      "mouseDrag": true,
+      "swipeAngle": false,
+      "speed": 400,
+      "navAsThumbnails":true
+    });
+
+      console.log("game: ", response);
+    })
+    
+    //console.log("Game :", loadJSONn());
+  </script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/min/tiny-slider.js"></script>
+  <script>
+
+
+    var slider2 = tns({
+      container: '.curatedSlider',
+      "autowidth": true,
+      "items": 1,
+      "slideBy": "page",
+      "mouseDrag": true,
+      "swipeAngle": false,
+      "speed": 400,
+      "navAsThumbnails":true
+    });
+  </script>
 </body>
 
 </html>
