@@ -1,4 +1,8 @@
-//const game = require("./steamworldHeist.json");
+const params = {
+  "falseGames": [
+    "610340"
+  ]
+};
 
 const loadJSON = (file, callback) => {
   let xobj = new XMLHttpRequest();
@@ -16,11 +20,11 @@ const loadJSON = (file, callback) => {
   xobj.send(null);
 };
 
-const init = (callback) => {
-  loadJSON("steamworldHeist.json", (response) => {
+const getAllApps = (callback) => {
+  loadJSON("all.json", (response) => {
     // Parse JSON string into object
     let actual_JSON = JSON.parse(response);
     // return first key
-    callback(actual_JSON[Object.keys(actual_JSON)[0]].data);
+    callback(actual_JSON);
   });
 };

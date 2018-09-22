@@ -23,21 +23,22 @@
 <body>
   <div class="container">
     <div class="header">
-      <h1>What to play on Steam?</h1>
+      <h1>what to play on  <img src="https://steamstore-a.akamaihd.net/public/shared/images/header/globalheader_logo.png?t=962016"/></h1>
     </div>
-    <div class="random">
+    <div id="randomLoading">
+      <h2 >Random game</h2>
+      <img width="64" height="64" alt="loading" src="data:image/gif;base64,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" />
+    </div>
+    <div id="random" style="display: none">
       <div class="randomName">
         <h2 >Random game</h2>
-        <h2>
-          <a id="randomGameName" href="http://store.steampowered.com/app/208353">Train Simulator: ScotRail Class 380 EMU Add-On</a>
-        </h2>
+        <h2><a id="randomGameName"></a></h2>
       </div>
       <div class="gallery">
         <div id="randomGameScreenshots" class="randomSlider"></div>
       </div>
-      <div id="randomGameDescription" class="description">
-        <p>The Class 380 electric multiple unit is a great modern image British train, and runs on the <a href=\"http://store.steampowered.com/app/24065/\" target=\"_blank\" rel=\"noreferrer\"  >Glasgow Airport Rail Link</a>route (also available for Train Simulator).</p>
-      </div>
+      <h2>About the game</h2>
+      <div id="randomGameDescription" class="description"></div>
     </div>
     <div class="curated">
       <div class="curatedName">
@@ -48,21 +49,9 @@
         </div>
         <div class="gallery">
           <div class="curatedSlider">
-            <!-- <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_d102e1688a5ed0d935ff8d842e36c7e79ba9307a.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_6e3c18e55376597f09c98a8c85656e896f358be0.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_0eefbeb22592e3370d1716e036241bb48faa6244.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_ee7aebdb653e9e2ce0ba0fb4c0e5d81ab27ddcbe.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_c3f2171a4ff2a5a52a488c48d99296ccb5b52254.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_716d671bb000eb6ac6c8a07380f5ced021a96b74.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_e1623c8cd3295380959d4739be0179a3515edea5.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_a534aac9436ed822f7b1dc8579e224bd9239f481.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_2001016f2c8e9a9ecd220b34734aa3e575477a63.600x338.jpg?t=1528892155"/></div>
-            <div><img src="https://steamcdn-a.akamaihd.net/steam/apps/322190/ss_33cb8ccac69c661b3fa71792eff175e3bde5ccb6.600x338.jpg?t=1528892155"/></div> -->
           </div>
         </div>
-        <div class="description">
-          <p>2D Strategy RPG. <a href="https://store.steampowered.com/app/268500">X-Com 2</a> + <a href="https://store.steampowered.com/app/217200">Worms Armaggeddon</a></p>
-        </div>
+        <div class="description"></div>
     </div>
     <div class="promoted">  
       <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -79,15 +68,100 @@
     <div class="footer">a</div>
   </div>
 
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="./calls.js"></script>
   <script>
-    //const gets = require("./calls.js");
-    init( (response) => {
+
+    const getGames = (appIds, i=0) => {
+      console.log('i :', i);
+      if (i < appIds.length) {
+        const appId = appIds[i];
+        const gameUrl = `https://store.steampowered.com/api/appdetails?appids=${appId}`;
+        console.log('gameUrl :', gameUrl);
+        let response = {};
+        axios.get(gameUrl)
+        .then( data => {
+          const response = data.data[appId];
+          console.log('response :', response);
+          if (
+            response.data && 
+            response.success &&
+            response.data.type === "game" &&
+            !params.falseGames.includes(appId)
+          ) {
+            gameFound = true;
+            updateWeb(response.data);
+          } else {
+            i++;
+            getGames(appIds, i);
+          }
+        })
+        .catch( err => console.log('err :', err));
+      }
+    };
+
+    const getGame = (appId) => {
+      const gameUrl = `https://store.steampowered.com/api/appdetails?appids=${appId}`;
+      let response = {};
+      axios.get(gameUrl)
+      .then( data => {
+        const response = data.data[appId].data;
+        if (response) {
+          console.log(response);
+          updateWeb(response);
+        }
+      })
+      .catch( err => console.log('err :', err));
       
+    };
+
+    getAllApps ((response) => {
+      const maxGames = response.length;
+      let appIds = [];
+
+      for (let i=0; i < 100; i++) {
+        const randomId = response[Math.floor((Math.random() * maxGames))];
+        appIds.push(randomId);
+      }
+      console.log('appIds :', appIds);
+      getGames(appIds);
+    });
+
+    const url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=5E0F8A4820D63CB92B24DDF4546BFF60&steamid=76561197997143584&format=json";
+    // axios.get(url)
+    // .then( data => {
+    //   const maxGames = data.data.response.games.length;
+    //   const randomId = data.data.response.games[Math.floor((Math.random() * maxGames))].appid;
+    //   console.log('randomId :', randomId);
+    //   console.log(data.data.response.games[randomId]); 
+      
+    //   getGame(randomId);
+    // })
+    // .catch( err => console.log('err :', err));
+
+    const filterDescription = (description) => {
+      let outDescription = description;
+      outDescription = outDescription.replace(/<br><br>/gi,"<br/>");
+      outDescription = outDescription.replace(/<br\/><br\/>/gi,"<br/>");
+      outDescription = outDescription.replace(/<br>\n<br>/gi,"<br/>");
+      outDescription = outDescription.replace(/<br\/><br\/>/gi,"<br/>");
+      return outDescription;
+    }
+
+    const updateWeb = (response) => {  
+      document.getElementById("randomLoading").style.display = "none";    
+      document.getElementById("random").style.display = "block";    
       document.getElementById("randomGameName").innerText = response.name;
       const steamUrl = "https://store.steampowered.com/app/" + response.steam_appid;
       document.getElementById("randomGameName").setAttribute("href", steamUrl);
-      document.getElementById("randomGameDescription").innerHTML = response.short_description;
+      let description = "";
+      if (response.about_the_game) {
+        description = response.about_the_game;
+      } else if (response.short_description) {
+        description = response.short_description;
+      }
+      description = filterDescription(description);
+      document.getElementById("randomGameDescription").innerHTML = description;
       
       response.screenshots.forEach(screenshot => {
         let elem = document.createElement('div');
@@ -101,24 +175,25 @@
       container: '.randomSlider',
       "autowidth": true,
       "items": 1,
-      "slideBy": "page",
+      "slideBy": 1,
       "mouseDrag": true,
       "swipeAngle": false,
       "speed": 400,
-      "navAsThumbnails":true
+      "navAsThumbnails":true,
+      "autoplay": true,
+      "autoplayTimeout": 5000,
+      "autoplayButton": false,
+      "autoplayButtonOutput": false,
+      "autoHeight": true,
+      "lazyload": true
     });
-
-      console.log("game: ", response);
-    })
-    
-    //console.log("Game :", loadJSONn());
+  }
   </script>
 
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/min/tiny-slider.js"></script>
   <script>
-
 
     var slider2 = tns({
       container: '.curatedSlider',
@@ -128,7 +203,7 @@
       "mouseDrag": true,
       "swipeAngle": false,
       "speed": 400,
-      "navAsThumbnails":true
+      "navAsThumbnails":true,
     });
   </script>
 </body>
