@@ -1,7 +1,22 @@
 const params = {
   "falseGames": [
-    "610340"
+    "610340", "244830", "236890"
   ]
+};
+
+const isValidGame = (response, appId) => {
+  try {
+    return (
+      !params.falseGames.includes(appId) &&
+      response.success &&
+      response.data && 
+      response.data.type === "game" &&
+      !response.data.release_date.coming_soon
+    );
+  } catch (e) {
+    console.log("Error :", e);
+  } 
+  return false;
 };
 
 const loadJSON = (file, callback) => {

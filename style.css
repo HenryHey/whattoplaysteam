@@ -15,8 +15,16 @@ a {
   grid-area: random;
 }
 
+#curated {
+  background-color: #203a4c;
+}
+
 .curated {
   grid-area: curated;
+}
+
+#promoted {
+  background-color: #1d2937;
 }
 
 .promoted {
@@ -25,6 +33,7 @@ a {
 
 .footer {
   grid-area: footer;
+  padding: 10px;
 }
 
 h1 img {
@@ -38,6 +47,11 @@ h1 img {
 .description {
   text-align: left;
   padding: 5px;
+  width: 95%;
+}
+
+.description img{
+  text-align: center;
   width: 95%;
 }
 
@@ -61,7 +75,11 @@ h1 img {
     "footer footer";
 }
 
-#randomLoading {
+#randomLoading img {
+  padding-top: 50px;
+}
+
+#curatedLoading img {
   padding-top: 50px;
 }
 
