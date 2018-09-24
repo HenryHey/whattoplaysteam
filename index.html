@@ -182,9 +182,8 @@
       //const url = "http://127.0.0.1:3000/1/getSteamGames";
       axios.get(url)
         .then( data => {
-          console.log(data.data.data);
-          const response = data;
-          updateWeb(response.data.data, "random");
+          const response = JSON.parse(data.data.body).data;
+          updateWeb(response, "random");
         })
         .catch( err => console.log('err :', err));
     };
