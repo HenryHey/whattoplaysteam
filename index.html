@@ -193,7 +193,18 @@
       document.getElementById("curated").style.display = "none"; 
 
       const description =  '<p>2D Strategy RPG. <a href="https://store.steampowered.com/app/268500">X-Com 2</a> + <a href="https://store.steampowered.com/app/217200">Worms Armaggeddon</a></p>';
-      getGame("322190", description, "curated");
+      //getGame("322190", description, "curated");
+
+      const url = "./steamworldHeist.json";
+      axios.get(url)
+        .then( data => {
+          const response = data.data["322190"].data;
+
+          console.log('curated :', response);
+          updateWeb(response, "curated");
+          customDescription(description);
+        })
+        .catch( err => console.log('err :', err));
     };
 
     loadRandomGame();
