@@ -178,17 +178,15 @@
       document.getElementById("randomLoading").style.display = "block";    
       document.getElementById("random").style.display = "none"; 
 
-      getAllApps ((response) => {
-        const maxGames = response.length;
-        let appIds = [];
-
-        for (let i=0; i < 100; i++) {
-          const randomId = response[Math.floor((Math.random() * maxGames))];
-          appIds.push(randomId);
-        }
-        console.log('appIds :', appIds);
-        getGames(appIds);
-      });
+      const url = "https://p92qekdxx9.execute-api.us-east-2.amazonaws.com/prod/getSteamGames";
+      //const url = "http://127.0.0.1:3000/1/getSteamGames";
+      axios.get(url)
+        .then( data => {
+          console.log(data.data.data);
+          const response = data;
+          updateWeb(response.data.data, "random");
+        })
+        .catch( err => console.log('err :', err));
     };
 
     const loadCuratedGame = () => {
