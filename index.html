@@ -7,12 +7,14 @@
   <meta name=viewport content="width=device-width, initial-scale=1">
   <meta name="description" content="Do you have too many Steam games? Need help clearing the backlog? Come and get some recommendations">
 
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126352481-1"></script>
   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-9887741933377417",
-      enable_page_level_ads: true
-    });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-126352481-1');
   </script>
 
   <link rel="stylesheet" href="./style.css">
@@ -96,7 +98,11 @@
       document.getElementById(elem).style.display = "block";    
       document.getElementById(elem + "GameName").innerText = response.name;
       const steamUrl = "https://store.steampowered.com/app/" + response.steam_appid;
-      document.getElementById(elem + "GameName").setAttribute("href", steamUrl);
+      const gameLink = document.getElementById(elem + "GameName");
+      gameLink.setAttribute("href", steamUrl)
+      gameLink.setAttribute("target", "_blank")
+      gameLink.setAttribute("rel", "noopener noreferrer");
+
       let description = "";
       if (response.about_the_game) {
         description = response.about_the_game;
@@ -178,10 +184,14 @@
       document.getElementById("random").style.display = "none"; 
 
       const url = "https://p92qekdxx9.execute-api.us-east-2.amazonaws.com/prod/getSteamGames";
-      //const url = "http://127.0.0.1:3000/1/getSteamGames";
+      // const url = "http://127.0.0.1:3000/1/getSteamGames";
       axios.get(url)
         .then( data => {
           const response = JSON.parse(data.data.body).data;
+          // const response = data.data.data;
+          console.log('response :', response);
+
+          
           updateWeb(response, "random");
         })
         .catch( err => console.log('err :', err));
@@ -191,7 +201,7 @@
       document.getElementById("curatedLoading").style.display = "block";    
       document.getElementById("curated").style.display = "none"; 
 
-      const description =  '<p>2D Strategy RPG. <a href="https://store.steampowered.com/app/268500">X-Com 2</a> + <a href="https://store.steampowered.com/app/217200">Worms Armaggeddon</a></p>';
+      const description =  '<p>2D Strategy RPG. <a href="https://store.steampowered.com/app/268500" target="_blank" rel="noopener noreferrer">X-Com 2</a> + <a href="https://store.steampowered.com/app/217200" target="_blank" rel="noopener noreferrer">Worms Armaggeddon</a></p>';
       //getGame("322190", description, "curated");
 
       const url = "./steamworldHeist.json";
