@@ -39,8 +39,7 @@
     </div>
     <div id="random" style="display: none">
       <div class="randomName">
-        <!-- <h2 >random game (<a onclick="stopSlider()">all</a> / mine)</h2> -->
-        <h2 >random game</h2>
+        <h2 >random game <a style="cursor: pointer; font-size: xx-large" onclick="resetRandom()"> ⟳</a></h2>
         <h2><a id="randomGameName" target="_blank"></a></h2>
       </div>
       <div class="gallery">
@@ -112,6 +111,18 @@
       }
       description = filterDescription(description);
       document.getElementById(elem + "GameDescription").innerHTML = description;
+
+      const sliderElem = document.getElementById(elem + "GameScreenshots-ow");
+      console.log('sliderElem :', sliderElem);
+      if (sliderElem) {
+        const parent = document.getElementById(elem + "GameScreenshots-ow").parentNode;
+        sliderElem.remove()
+        let screenShotsElem = document.createElement('div');
+        screenShotsElem.setAttribute("id", elem + "GameScreenshots");
+        screenShotsElem.setAttribute("class", elem + "Slider");
+        parent.appendChild(screenShotsElem);
+        console.log('parent :', parent);
+      }
       
       response.screenshots.forEach(screenshot => {
         let divElem = document.createElement('div');
@@ -123,18 +134,15 @@
       });
 
       sliders[elem] = tns({
-        container: "." + elem + "Slider",
+        "container": "." + elem + "Slider",
         "autowidth": true,
         "items": 1,
         "slideBy": 1,
         "mouseDrag": true,
         "swipeAngle": false,
+        "controlsText": ['◀', '▶'],
         "speed": 400,
         "navAsThumbnails":true,
-        // "autoplay": true,
-        // "autoplayTimeout": 8000,
-        // "autoplayButton": false,
-        // "autoplayButtonOutput": false,
         "autoHeight": true,
         "lazyload": true
       });
@@ -180,6 +188,13 @@
       
     };
 
+    const resetRandom = () => {
+      document.getElementById("randomLoading").style.display = "block";    
+      document.getElementById("random").style.display = "none";
+
+      loadRandomGame(); 
+    }
+
     const loadRandomGame = () => {
       document.getElementById("randomLoading").style.display = "block";    
       document.getElementById("random").style.display = "none"; 
@@ -188,12 +203,13 @@
       // const url = "http://127.0.0.1:3000/1/getSteamGames";
       axios.get(url)
         .then( data => {
-          const response = JSON.parse(data.data.body).data;
-          // const response = data.data.data;
-          console.log('response :', response);
-
-          
-          updateWeb(response, "random");
+          try {
+            const response = JSON.parse(data.data.body).data;
+            console.log('response :', response);
+            updateWeb(response, "random");
+          } catch (e) {
+            console.log('data :', data);
+          }
         })
         .catch( err => console.log('err :', err));
     };
