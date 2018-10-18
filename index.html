@@ -241,13 +241,13 @@
       document.getElementById("curatedLoading").style.display = "block";    
       document.getElementById("curated").style.display = "none"; 
 
-      const description =  '<p>2D Strategy RPG. <a href="https://store.steampowered.com/app/268500" target="_blank" rel="noopener noreferrer">X-Com 2</a> + <a href="https://store.steampowered.com/app/217200" target="_blank" rel="noopener noreferrer">Worms Armaggeddon</a></p>';
+      const description =  '<p>3D platformer, very similar to 3D Mario games</p>';
       //getGame("322190", description, "curated");
 
       const url = "./steamworldHeist.json";
       axios.get(url)
         .then( data => {
-          const response = data.data["322190"].data;
+          const response = data.data["253230"].data;
 
           console.log('curated :', response);
           updateWeb(response, "curated");
