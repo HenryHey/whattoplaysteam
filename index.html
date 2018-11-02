@@ -239,13 +239,13 @@
       document.getElementById("curatedLoading").style.display = "block";    
       document.getElementById("curated").style.display = "none"; 
 
-      const description =  '<p>3D platformer, very similar to 3D Mario games</p>';
+      const description =  '<p>Spacechip simulator roguelike-like</p>';
       //getGame("322190", description, "curated");
 
-      const url = "./steamworldHeist.json";
+      const url = "./curated.json";
       axios.get(url)
         .then( data => {
-          const response = data.data["253230"].data;
+          const response = data.data["212680"].data;
 
           console.log('curated :', response);
           updateWeb(response, "curated");
