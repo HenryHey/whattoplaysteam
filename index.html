@@ -39,7 +39,7 @@
     <div id="random" style="display: none">
       <div class="randomName">
         <h2 id="randomGameTitle"><a href="#" onclick="resetRandom()">get another</a> random game from <a href="#" onclick="changeLibrary()">all</a> library</h2>
-        <h1><a id="randomGameName" target="_blank"></a></h2>
+        <h1 id="randomGame"><a id="randomGameName" target="_blank"></a></h1>
       </div>
       <div class="gallery">
         <div id="randomGameScreenshots" class="randomSlider"></div>
@@ -56,7 +56,7 @@
       <div id="curated" style="display: none">
         <div class="curatedName">
             <h1>curated game</h2>
-            <h1><a id="curatedGameName" target="_blank"></a></h2>
+            <h1 id="curatedGame"><a id="curatedGameName" target="_blank"></a></h1>
           </div>
           <div class="gallery">
             <div id="curatedGameScreenshots" class="curatedSlider">
@@ -95,6 +95,7 @@
       document.getElementById(elem + "Loading").style.display = "none";    
       document.getElementById(elem).style.display = "block";    
       document.getElementById(elem + "GameName").innerText = response.name;
+
       const steamUrl = "https://store.steampowered.com/app/" + response.steam_appid;
       const gameLink = document.getElementById(elem + "GameName");
       gameLink.setAttribute("href", steamUrl)
@@ -144,7 +145,16 @@
         "autoHeight": true,
         "lazyload": true
       });
+
+      // Schema data
+      document.getElementById(elem).setAttribute("itemscope","");
+      document.getElementById(elem).setAttribute("itemtype","http://schema.org/VideoGame");
+      document.getElementById(elem + "Game").setAttribute("itemprop", "name");
+      document.getElementById(elem + "GameName").setAttribute("itemprop", "url");
+      document.getElementById(elem + "GameDescription").setAttribute("itemprop", "description");
+
     }
+
     const changeLibrary = () => {
       if (library === "all") {
         library = "my";
