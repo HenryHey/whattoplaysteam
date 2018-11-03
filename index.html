@@ -36,16 +36,19 @@
       <h2 >loading random game</h2>
       <div class="lds-facebook"><div></div><div></div><div></div></div>
     </div>
-    <div id="random" style="display: none">
+    <div id="random" style="display: none" itemscope itemtype="http://schema.org/VideoGame">
+      <p style="display: none" itemprop="applicationCategory">Game</p>
+      <p style="display: none" itemprop="operatingSystem">Windows</p>
+
       <div class="randomName">
         <h2 id="randomGameTitle"><a href="#" onclick="resetRandom()">get another</a> random game from <a href="#" onclick="changeLibrary()">all</a> library</h2>
-        <h1 id="randomGame"><a id="randomGameName" target="_blank"></a></h1>
+        <h1 itemprop="name"><a itemprop="url" id="randomGameName" target="_blank"></a></h1>
       </div>
       <div class="gallery">
         <div id="randomGameScreenshots" class="randomSlider"></div>
       </div>
       <h2>about the game</h2>
-      <div id="randomGameDescription" class="description"></div>
+      <div id="randomGameDescription" class="description" itemprop="description"></div>
     </div>
 
     <div id="curatedLoading">
@@ -53,16 +56,20 @@
       <div class="lds-facebook"><div></div><div></div><div></div></div>
     </div>
     <div id="curatedContainer">
-      <div id="curated" style="display: none">
+      <div id="curated" style="display: none" itemscope itemtype="http://schema.org/VideoGame">
+        <div style="display: none" itemprop="applicationCategory">Game</div>
+        <div id="curatedOS" style="display: none" itemprop="operatingSystem">Windows</div>
         <div class="curatedName">
             <h1>curated game</h2>
-            <h1 id="curatedGame"><a id="curatedGameName" target="_blank"></a></h1>
+            <h1 id="curatedGame" itemprop="name">
+              <a id="curatedGameName" target="_blank" itemprop="url"></a>
+            </h1>
           </div>
           <div class="gallery">
             <div id="curatedGameScreenshots" class="curatedSlider">
             </div>
           </div>
-          <div id="curatedGameDescription" class="description"></div>
+          <div id="curatedGameDescription" class="description" itemprop="description"></div>
       </div>
       <div id="promoted" class="promoted">
         <h2>promoted game</h2>
@@ -145,14 +152,6 @@
         "autoHeight": true,
         "lazyload": true
       });
-
-      // Schema data
-      document.getElementById(elem).setAttribute("itemscope","");
-      document.getElementById(elem).setAttribute("itemtype","http://schema.org/VideoGame");
-      document.getElementById(elem + "Game").setAttribute("itemprop", "name");
-      document.getElementById(elem + "GameName").setAttribute("itemprop", "url");
-      document.getElementById(elem + "GameDescription").setAttribute("itemprop", "description");
-
     }
 
     const changeLibrary = () => {
