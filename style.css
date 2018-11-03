@@ -74,6 +74,21 @@ a {
     "footer footer";
 }
 
+@media (max-width: 1200px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    text-align: center;
+    grid-template-areas:
+    "header"
+    "random"
+    "curatedContainer"
+    "footer";
+  }
+}
+
+
 #randomLoading img {
   padding-top: 50px;
 }
