@@ -36,19 +36,17 @@
       <h2 >loading random game</h2>
       <div class="lds-facebook"><div></div><div></div><div></div></div>
     </div>
-    <div id="random" style="display: none" itemscope itemtype="http://schema.org/VideoGame">
-      <p style="display: none" itemprop="applicationCategory">Game</p>
-      <p style="display: none" itemprop="operatingSystem">Windows</p>
+    <div id="random" style="display: none">
 
       <div class="randomName">
         <h2 id="randomGameTitle"><a href="#" onclick="resetRandom()">get another</a> random game from <a href="#" onclick="changeLibrary()">all</a> library</h2>
-        <h1 itemprop="name"><a itemprop="url" id="randomGameName" target="_blank"></a></h1>
+        <h1><a id="randomGameName" target="_blank"></a></h1>
       </div>
       <div class="gallery">
         <div id="randomGameScreenshots" class="randomSlider"></div>
       </div>
       <h2>about the game</h2>
-      <div id="randomGameDescription" class="description" itemprop="description"></div>
+      <div id="randomGameDescription" class="description"></div>
     </div>
 
     <div id="curatedLoading">
@@ -56,20 +54,18 @@
       <div class="lds-facebook"><div></div><div></div><div></div></div>
     </div>
     <div id="curatedContainer">
-      <div id="curated" style="display: none" itemscope itemtype="http://schema.org/VideoGame">
-        <div style="display: none" itemprop="applicationCategory">Game</div>
-        <div id="curatedOS" style="display: none" itemprop="operatingSystem">Windows</div>
+      <div id="curated" style="display: none">
         <div class="curatedName">
             <h1>curated game</h2>
-            <h1 id="curatedGame" itemprop="name">
-              <a id="curatedGameName" target="_blank" itemprop="url"></a>
+            <h1 id="curatedGame">
+              <a id="curatedGameName" target="_blank"></a>
             </h1>
           </div>
           <div class="gallery">
             <div id="curatedGameScreenshots" class="curatedSlider">
             </div>
           </div>
-          <div id="curatedGameDescription" class="description" itemprop="description"></div>
+          <div id="curatedGameDescription" class="description"></div>
       </div>
       <div id="promoted" class="promoted">
         <h2>promoted game</h2>
@@ -97,6 +93,29 @@
       outDescription = outDescription.replace(/<br\/><br\/>/gi,"<br/>");
       return outDescription;
     };
+
+    const updateJsonLD = (response, description, elem) => {
+      var el = document.createElement('script');
+      el.type = 'application/ld+json';
+      var jsonLd = {
+        "@context": "http://schema.org/",
+        "@type": "VideoGame",
+        "name": response.name,
+        "description": description,
+        "url": "https://store.steampowered.com/app/" + response.steam_appid,
+        "screenshot": response.screenshots[0].path_full,
+        "applicationCategory": "Game",
+        "operatingSystem": "Windows",
+        "offers": {
+          "@type": "offer",
+          "price": response.price_overview.final/100.0,
+          "priceCurrency": "EUR"
+        }
+      };
+
+      el.text = JSON.stringify(jsonLd);
+      document.querySelector('head').appendChild(el);
+    }
 
     const updateWeb = (response, elem = "random") => {
       document.getElementById(elem + "Loading").style.display = "none";    
@@ -134,7 +153,7 @@
         let divElem = document.createElement('div');
         let img = document.createElement("img");
         img.setAttribute("src", screenshot.path_thumbnail);
-        img.setAttribute("alt", "Screenshot");
+        img.setAttribute("alt", response.name + " screenshot");
         divElem.appendChild(img);
         document.getElementById(elem + "GameScreenshots").appendChild(divElem);
       });
@@ -152,6 +171,8 @@
         "autoHeight": true,
         "lazyload": true
       });
+
+      updateJsonLD(response, description, elem);
     }
 
     const changeLibrary = () => {
