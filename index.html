@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
 <head>
@@ -6,25 +7,13 @@
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name=viewport content="width=device-width, initial-scale=1">
-  <meta name="description" content="Do you have too many Steam games? Need help clearing the backlog? Come and get some recommendations">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126352481-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-126352481-1', { 'anonymize_ip': true });
-  </script>
+  <meta name="description" content="Do you have too many Steam games? Need help clearing the backlog? Come and get some recommendations!">
 
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./tinyslide.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/tiny-slider.css">
   <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/min/tiny-slider.helper.ie8.js"></script><![endif]-->
-
-
 </head>
 
 <body>
@@ -72,11 +61,11 @@
         <p>Your game here! Contact me <a href="https://twitter.com/whatToPlaySteam">@whatToPlaySteam!</a></p>
       </div>
     </div>
-    <div class="footer"><hr>Copyright 2018 Enric Masdeu</div>
+    <div class="footer"><hr>Copyright 2019 Enric Masdeu</div>
   </div>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="./calls.js"></script>
+  <script type="module" src="./calls.js"></script>
   <script>
     var sliders = {};
     var library = "all";
@@ -186,109 +175,53 @@
       `<a href="#" onclick="resetRandom()">get another</a> random game from <a href="#" onclick="changeLibrary()">${library}</a> library`;
     }
 
-    const getGames = (appIds, i=0) => {
-      console.log('i :', i);
-      if (i < appIds.length) {
-        const appId = appIds[i];
-        const gameUrl = `https://store.steampowered.com/api/appdetails?appids=${appId}`;
-        console.log('gameUrl :', gameUrl);
-        let response = {};
-        axios.get(gameUrl)
-        .then( data => {
-          const response = data.data[appId];
-          if (isValidGame(response, appId)) {
-            gameFound = true;
-            updateWeb(response.data, "random");
-          } else {
-            i++;
-            getGames(appIds, i);
-          }
-        })
-        .catch( err => console.log('err :', err));
-      }
-    };
-
-    const getGame = (appId, description = "", elem="random") => {
-      const gameUrl = `https://store.steampowered.com/api/appdetails?appids=${appId}`;
-      let response = {};
-      axios.get(gameUrl)
-      .then( data => {
-        const response = data.data[appId].data;
-        if (response) {
-          console.log(response);
-          updateWeb(response, elem);
-          if (description) {
-            customDescription(description);
-          }
-        }
-      })
-      .catch( err => console.log('err :', err));
-      
-    };
-
     const resetRandom = () => {
       document.getElementById("randomLoading").style.display = "block";    
       document.getElementById("random").style.display = "none";
 
       if (library === "all") {
-        loadRandomGame();  
+        updateRandomGame();  
       } else {
-        loadRandomGame(steamId);
+        updateRandomGame(steamId);
       }
       
     }
 
-    const filterSteamId = (steamId) = () => {
-      return steamId;
+    const updateRandomGame = (steamId = "") => {
+      loadRandomGame(steamId).then( (response) => {
+        updateWeb(response, "curated");
+
+        document.getElementById("randomLoading").style.display = "none";    
+        document.getElementById("random").style.display = "block"; 
+      });
     };
 
-    const loadRandomGame = (steamId = "") => {
-      let url = "https://p92qekdxx9.execute-api.us-east-2.amazonaws.com/prod/getSteamGames";
+    const updateCuratedGame = () => {
+      const curatedGame = loadCuratedGame().then( (response) => {  
+        updateWeb(response, "curated");
 
-      if (steamId) {
-        steamId = filterSteamId(steamId);
-        url += "?steamId=" + steamId;
-      }
-      axios.get(url)
-        .then( data => {
-          try {
-            const response = JSON.parse(data.data.body).data;
-            console.log('response :', response);
-            updateWeb(response, "random");
-          } catch (e) {
-            console.log('data :', data);
-          }
+        const description =  "<p>Spaceship captain simulator with roguelike elements. Assign your crew to different stations in battles and get through the procedurally generated scenarios.</p>";
+        customDescription(description);
 
-          document.getElementById("randomLoading").style.display = "none";    
-          document.getElementById("random").style.display = "block"; 
-        })
-        .catch( err => console.log('err :', err));
+        document.getElementById("curatedLoading").style.display = "block";    
+        document.getElementById("curated").style.display = "none"; 
+      });
     };
 
-    const loadCuratedGame = () => {
-      document.getElementById("curatedLoading").style.display = "block";    
-      document.getElementById("curated").style.display = "none"; 
-
-      const description =  '<p>Spaceship captain simulator with roguelike elements. Assign your crew to different stations in battles and get through the procedurally generated scenarios.</p>';
-      //getGame("322190", description, "curated");
-
-      const url = "./curated.json";
-      axios.get(url)
-        .then( data => {
-          const response = data.data["212680"].data;
-
-          console.log('curated :', response);
-          updateWeb(response, "curated");
-          customDescription(description);
-        })
-        .catch( err => console.log('err :', err));
-    };
-
-    loadRandomGame();
-    loadCuratedGame();
+    updateRandomGame();
+    updateCuratedGame();
+    
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/min/tiny-slider.js"></script>
 
 </body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126352481-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-126352481-1', { 'anonymize_ip': true });
+  </script>
 </html>
