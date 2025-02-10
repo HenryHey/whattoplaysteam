@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^9.20.0",
-    "eslint-config-standard": "^15.0.1",
+    "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^7.2.1",
